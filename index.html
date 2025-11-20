@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hamza Kamran | RESECON 490AI Portfolio</title>
+    <title>Hamza Kamran | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f5f6fa;
-            --text-color: #1f2933;
-            --muted: #5f6b7c;
-            --accent: #2f6fed;
+            --background: #f5f5f5;
+            --surface: #ffffff;
+            --text: #111111;
+            --muted: #5c5c5c;
+            --border: #dddddd;
         }
         * {
             box-sizing: border-box;
@@ -21,124 +22,255 @@
             margin: 0;
             min-height: 100vh;
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
+            background: var(--background);
+            color: var(--text);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 48px 16px;
         }
-        .page {
+        main {
             width: 100%;
             max-width: 960px;
-            background: #fff;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 20px;
-            box-shadow: 0 20px 65px rgba(15, 23, 42, 0.08);
             padding: 48px;
             display: flex;
             flex-direction: column;
+            gap: 40px;
+        }
+        header {
+            display: flex;
             gap: 32px;
+            align-items: center;
         }
-        .intro {
-            text-align: center;
+        .hero-photo {
+            width: 220px;
+            flex-shrink: 0;
         }
-        .intro h1 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 600;
-            margin: 0;
+        .hero-photo img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(5%);
+            border: 1px solid var(--border);
         }
-        .intro p {
-            margin: 16px auto 0;
-            max-width: 720px;
-            font-size: 1.05rem;
-            line-height: 1.6;
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            margin: 0 0 8px;
+        }
+        .eyebrow {
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
             color: var(--muted);
         }
+        .summary {
+            margin: 0 0 24px;
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 560px;
+        }
         .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .button {
+            text-decoration: none;
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 12px 20px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .button.primary {
+            background: var(--text);
+            color: #fff;
+        }
+        .button:hover {
+            background: var(--text);
+            color: #fff;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        section h2 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+        section p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .card-link {
-            text-decoration: none;
-            color: inherit;
+            gap: 16px;
         }
         .card {
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            border-radius: 16px;
-            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            background: #fafafa;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
         }
-        .card span {
-            font-size: 0.9rem;
+        .card h3 {
+            margin: 0;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-weight: 600;
-            color: var(--accent);
+            color: var(--muted);
         }
         .card strong {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.05rem;
         }
-        .card p {
+        .list {
             margin: 0;
-            font-size: 0.95rem;
+            padding-left: 18px;
             color: var(--muted);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .list li {
             line-height: 1.5;
         }
-        .card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 12px 25px rgba(47, 111, 237, 0.15);
-            transform: translateY(-4px);
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: var(--muted);
         }
         footer {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--muted);
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
         }
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
             body {
                 padding: 24px 12px;
             }
-            .page {
+            main {
                 padding: 32px 24px;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-photo {
+                width: 160px;
+            }
+            .summary {
+                max-width: none;
+            }
+            .actions {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <main class="page">
-        <section class="intro">
-            <h1>Hamza Kamran</h1>
-            <!-- Update this paragraph later with your preferred description -->
-            <p>Undergraduate student in Managerial Economics &amp; Finance at UMass Amherst, exploring how AI supports economic decision-making, data analysis, and portfolio management.</p>
+    <main>
+        <header>
+            <div class="hero-photo">
+                <img src="headshot.jpg" alt="Portrait of Hamza Kamran" />
+            </div>
+            <div class="hero-content">
+                <p class="eyebrow">Finance & Managerial Economics</p>
+                <h1>Hamza Kamran</h1>
+                <p class="summary">BBA Finance and BS Managerial Economics candidate at UMass Amherst focused on financial modeling, AI-enabled analysis, and research-backed decision-making. I blend market research, econometrics, and automation tools to help teams move from raw data to strategic action.</p>
+                <div class="actions">
+                    <a class="button primary" href="resume.pdf">Resume</a>
+                    <a class="button" href="project.html">Projects</a>
+                    <a class="button" href="https://www.linkedin.com/in/hamzakamran-" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Me section: update summary or tone here -->
+        <section>
+            <h2>About Me</h2>
+            <p>I’m a senior at the Isenberg School of Management building a career at the intersection of capital markets, AI applications, and economic strategy. From independently scaling a personal trading portfolio during the pandemic to supporting interdisciplinary research at the Slavery North Initiative, I’m driven by curiosity and disciplined analysis.</p>
+            <p>At UMass Amherst I pursue dual degrees in Finance (Financial Risk Management & Alternative Investments track) and Managerial Economics while holding leadership roles and hands-on campus jobs that keep me connected to the community.</p>
+            <div class="about-grid">
+                <article class="card">
+                    <h3>Academic Focus</h3>
+                    <strong>UMass Amherst · Class of 2026</strong>
+                    <p>BBA Finance & BS Managerial Economics · GPA 3.76 · Dean’s List & Chancellor’s Award Scholar</p>
+                    <ul class="list">
+                        <li>Coursework in Financial Modeling, Econometrics, Decision Analysis, and Investments.</li>
+                        <li>Tracks: Financial Risk Management & Alternative Investments.</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>Current Roles</h3>
+                    <strong>AI + Research</strong>
+                    <ul class="list">
+                        <li>MSBDC Summer Intern integrating AI tools into business plans, forecasts, and pitch materials.</li>
+                        <li>Undergraduate Research Assistant for the Slavery North Initiative digitizing complex historical archives.</li>
+                        <li>Founder of StratiVis, an experimentation studio exploring data-driven strategy projects.</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>Industry Experience</h3>
+                    <strong>Clean Energy & Capital Markets</strong>
+                    <ul class="list">
+                        <li>Re-Volt Charging: modeled EV charger utilization, capital needs, and incentive-driven ROI.</li>
+                        <li>JS Group Internships: investment banking, risk, and wealth roles across JS Global Capital, JS Investments, and JS Bank.</li>
+                        <li>Pakistan Stock Exchange: achieved 150% ROI through disciplined technical and macro analysis.</li>
+                    </ul>
+                </article>
+            </div>
         </section>
 
-        <section class="actions">
-            <a class="card-link" href="resume.pdf">
-                <article class="card">
-                    <span>Resume</span>
-                    <strong>Experience &amp; Coursework</strong>
-                    <!-- Customize this supporting text with any highlights -->
-                    <p>View my latest resume, including finance coursework, AI projects, and research interests.</p>
-                </article>
-            </a>
+        <!-- Highlights section: adjust accomplishments as needed -->
+        <section>
+            <h2>Highlights</h2>
+            <ul class="list">
+                <li>Built AI-assisted financial models and ratio analyses for small business clients through a Google.org-backed MSBDC initiative.</li>
+                <li>Produced EV charging forecasts combining Stable Auto and National Grid datasets to guide deployment strategy at Re-Volt Charging.</li>
+                <li>Supported PKR 144B+ deal pipelines at JS Global Capital and evaluated PKR 107B in mutual & pension fund assets at JS Investments.</li>
+                <li>Led JS Bank private banking analyses that secured a 100% return rate on new ultra-HNW client relationships.</li>
+                <li>Independently scaled a PKR 1M trading account to 150% ROI by pairing quantitative signals with macroeconomic research.</li>
+            </ul>
+        </section>
 
-            <a class="card-link" href="project.html">
-                <article class="card">
-                    <span>Projects</span>
-                    <strong>RESECON 490AI</strong>
-                    <!-- Customize this supporting text with project details -->
-                    <p>Explore how I apply AI to economic analysis and portfolio management in my class project.</p>
-                </article>
-            </a>
+        <!-- Skills section: update or reorder skill tags here -->
+        <section>
+            <h2>Skills & Tools</h2>
+            <div class="skills">
+                <span class="skill">Financial Modeling</span>
+                <span class="skill">Investment Research</span>
+                <span class="skill">Python</span>
+                <span class="skill">Excel & VBA</span>
+                <span class="skill">AI Applications</span>
+                <span class="skill">Data Analysis</span>
+                <span class="skill">SAS</span>
+                <span class="skill">Business Planning</span>
+                <span class="skill">Operational Efficiency</span>
+            </div>
         </section>
 
         <footer>
-            <p>RESECON 490AI · UMass Amherst</p>
+            <p>Hamza Kamran · UMass Amherst · Finance & Managerial Economics</p>
         </footer>
     </main>
 </body>
