@@ -1,154 +1,145 @@
 <!DOCTYPE html>
-</html>
+<html lang="en">
 <head>
-    <title>My AI490 Site</title>
-    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamza Kamran | RESECON 490AI Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #f5f6fa;
+            --text-color: #1f2933;
+            --muted: #5f6b7c;
+            --accent: #2f6fed;
+        }
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             min-height: 100vh;
-            background: #1a0033;
-            color: #fff;
-            font-family: 'Press Start 2P', 'Orbitron', Arial, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            padding: 48px 16px;
         }
-        h1 {
-            font-family: 'Orbitron', Arial, sans-serif;
-            font-size: 2.5em;
-            color: #ff00cc;
-            text-shadow: 0 0 10px #ff00cc, 0 0 20px #00fff7;
-            margin-bottom: 20px;
+        .page {
+            width: 100%;
+            max-width: 960px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 65px rgba(15, 23, 42, 0.08);
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
-        p {
-            font-size: 1.1em;
-            color: #fff;
-            text-shadow: 0 0 5px #00fff7;
+        .intro {
+            text-align: center;
         }
-        b {
-            color: #00fff7;
-            text-shadow: 0 0 10px #ff00cc, 0 0 20px #00fff7;
-            font-size: 1.2em;
+        .intro h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            margin: 0;
         }
-        #synthwave {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
+        .intro p {
+            margin: 16px auto 0;
+            max-width: 720px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
         }
-        .content {
-            position: relative;
-            z-index: 1;
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .card {
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .card span {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .card strong {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 12px 25px rgba(47, 111, 237, 0.15);
+            transform: translateY(-4px);
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        @media (max-width: 640px) {
+            body {
+                padding: 24px 12px;
+            }
+            .page {
+                padding: 32px 24px;
+            }
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('synthwave');
-            const ctx = canvas.getContext('2d');
-            let w = window.innerWidth;
-            let h = window.innerHeight;
-            canvas.width = w;
-            canvas.height = h;
-
-            function drawSunset() {
-                // Sunset gradient
-                let grad = ctx.createRadialGradient(w/2, h*0.6, 10, w/2, h*0.6, h*0.4);
-                grad.addColorStop(0, '#fff200');
-                grad.addColorStop(0.3, '#ff00cc');
-                grad.addColorStop(0.7, '#ff0066');
-                grad.addColorStop(1, 'rgba(26,0,51,0.8)');
-                ctx.beginPath();
-                ctx.arc(w/2, h*0.6, h*0.25, 0, Math.PI*2);
-                ctx.fillStyle = grad;
-                ctx.globalAlpha = 0.8;
-                ctx.fill();
-                ctx.globalAlpha = 1;
-            }
-
-            function drawGrid(offset) {
-                // Perspective grid
-                ctx.save();
-                ctx.strokeStyle = '#00fff7';
-                ctx.lineWidth = 1;
-                ctx.globalAlpha = 0.5;
-                for(let i=0; i<30; i++) {
-                    ctx.beginPath();
-                    ctx.moveTo(0, h*0.8 + i*8 + offset%8);
-                    ctx.lineTo(w, h*0.8 + i*8 + offset%8);
-                    ctx.stroke();
-                }
-                for(let i=0; i<20; i++) {
-                    ctx.beginPath();
-                    ctx.moveTo(w/2, h*0.8);
-                    ctx.lineTo(i*w/20, h);
-                    ctx.stroke();
-                }
-                ctx.restore();
-                ctx.globalAlpha = 1;
-            }
-
-            function drawCar(x) {
-                // Simple car silhouette
-                ctx.save();
-                ctx.translate(x, h*0.85);
-                ctx.scale(1.5,1.5);
-                ctx.beginPath();
-                ctx.moveTo(-40,0);
-                ctx.lineTo(-30,-15);
-                ctx.lineTo(30,-15);
-                ctx.lineTo(40,0);
-                ctx.lineTo(35,10);
-                ctx.lineTo(-35,10);
-                ctx.closePath();
-                ctx.fillStyle = '#222';
-                ctx.shadowColor = '#ff00cc';
-                ctx.shadowBlur = 20;
-                ctx.fill();
-                // Wheels
-                ctx.beginPath();
-                ctx.arc(-25,10,5,0,Math.PI*2);
-                ctx.arc(25,10,5,0,Math.PI*2);
-                ctx.fillStyle = '#00fff7';
-                ctx.shadowBlur = 0;
-                ctx.fill();
-                ctx.restore();
-            }
-
-            let carX = w/2;
-            let carDX = 1.5;
-            let gridOffset = 0;
-            function animate() {
-                ctx.clearRect(0,0,w,h);
-                drawSunset();
-                drawGrid(gridOffset);
-                drawCar(carX);
-                carX += carDX;
-                if(carX > w*0.7 || carX < w*0.3) carDX *= -1;
-                gridOffset += 1.5;
-                requestAnimationFrame(animate);
-            }
-            animate();
-            window.addEventListener('resize', function() {
-                w = window.innerWidth;
-                h = window.innerHeight;
-                canvas.width = w;
-                canvas.height = h;
-                carX = w/2;
-            });
-        });
-    </script>
 </head>
-    <body>
-        <canvas id="synthwave"></canvas>
-        <div class="content">
-            <h1>Hello from my first webpage!</h1>
-            <p>This page will later host my coursework.</p>
-            <p><b>Hamza Kamran</b></p>
-        </div>
-    </body>
+<body>
+    <main class="page">
+        <section class="intro">
+            <h1>Hamza Kamran</h1>
+            <!-- Update this paragraph later with your preferred description -->
+            <p>Undergraduate student in Managerial Economics &amp; Finance at UMass Amherst, exploring how AI supports economic decision-making, data analysis, and portfolio management.</p>
+        </section>
+
+        <section class="actions">
+            <a class="card-link" href="resume.pdf">
+                <article class="card">
+                    <span>Resume</span>
+                    <strong>Experience &amp; Coursework</strong>
+                    <!-- Customize this supporting text with any highlights -->
+                    <p>View my latest resume, including finance coursework, AI projects, and research interests.</p>
+                </article>
+            </a>
+
+            <a class="card-link" href="project.html">
+                <article class="card">
+                    <span>Projects</span>
+                    <strong>RESECON 490AI</strong>
+                    <!-- Customize this supporting text with project details -->
+                    <p>Explore how I apply AI to economic analysis and portfolio management in my class project.</p>
+                </article>
+            </a>
+        </section>
+
+        <footer>
+            <p>RESECON 490AI · UMass Amherst</p>
+        </footer>
+    </main>
+</body>
 </html>
