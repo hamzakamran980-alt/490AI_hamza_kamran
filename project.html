@@ -11,220 +11,422 @@
 
   <style>
     :root {
-      --background: #f5f5f5;
+      --bg: #f5f6fa;
       --surface: #ffffff;
-      --text: #111111;
-      --muted: #5c5c5c;
-      --border: #dddddd;
+      --text: #0f172a;
+      --muted: #5f6b7c;
+      --border: rgba(15, 23, 42, 0.12);
       --accent: #2f6fed;
+      --accent-2: #1f5cd6;
+      --soft: rgba(47, 111, 237, 0.08);
+      --shadow: 0 20px 65px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       min-height: 100vh;
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--background);
+      background: var(--bg);
       color: var(--text);
+      padding: 34px 16px 60px;
       display: flex;
-      align-items: flex-start;
       justify-content: center;
-      padding: 48px 16px;
+      align-items: flex-start;
     }
-    main {
+
+    .wrapper {
       width: 100%;
-      max-width: 960px;
+      max-width: 980px;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 26px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
     }
+
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
+
     .brand {
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -0.02em;
       font-size: 1.05rem;
     }
-    nav a {
+
+    .nav-link {
       color: var(--accent);
       text-decoration: none;
       font-weight: 700;
     }
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      letter-spacing: -0.02em;
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      background: linear-gradient(180deg, rgba(47,111,237,0.06), rgba(47,111,237,0.02));
     }
-    p {
+
+    .hero h1 {
       margin: 0;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
       color: var(--muted);
       line-height: 1.7;
-      max-width: 720px;
+      max-width: 70ch;
     }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      background: rgba(255,255,255,0.65);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      background: #fff;
+      color: rgba(15, 23, 42, 0.82);
+      font-weight: 600;
+    }
+
     h2 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       letter-spacing: -0.01em;
     }
-    .materials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 10px;
+
+    .subtext {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
     }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
     .card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      background: #fafafa;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-height: 180px;
+      min-height: 210px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+      border-color: rgba(47, 111, 237, 0.45);
+    }
+
     .label {
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
       color: var(--accent);
-      font-weight: 700;
+      font-weight: 800;
     }
+
     .card strong {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       letter-spacing: -0.01em;
     }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .bullets {
+      margin: 2px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: auto;
+      padding-top: 6px;
     }
-    .button {
+
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 700;
+      border-radius: 12px;
+      font-weight: 800;
       text-decoration: none;
-      border: 1px solid var(--text);
+      border: 1px solid rgba(15, 23, 42, 0.12);
       color: var(--text);
-      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
-      background: transparent;
+      background: #fff;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      white-space: nowrap;
     }
-    .button.primary {
-      background: var(--text);
-      color: #fff;
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(47, 111, 237, 0.45);
+      background: rgba(47,111,237,0.05);
     }
-    .button:hover {
-      background: var(--text);
+
+    .btn.primary {
+      background: var(--accent);
       color: #fff;
+      border-color: transparent;
+      box-shadow: 0 14px 30px rgba(47, 111, 237, 0.25);
+    }
+
+    .btn.primary:hover {
+      background: var(--accent-2);
       transform: translateY(-1px);
     }
 
-    .embedded-section {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .document-preview {
-      border: 1px solid var(--border);
-      border-radius: 16px;
+    .preview-shell {
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      border-radius: 18px;
       overflow: hidden;
+      background: #fff;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      background: rgba(248, 250, 252, 0.8);
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      appearance: none;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      background: #fff;
+      color: rgba(15, 23, 42, 0.85);
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .tab:hover { transform: translateY(-1px); }
+    .tab.active {
+      background: var(--soft);
+      border-color: rgba(47, 111, 237, 0.45);
+      color: var(--accent);
+    }
+
+    .viewer {
+      width: 100%;
+      height: min(74vh, 720px);
+      border: none;
+      display: none;
       background: #f8fafc;
     }
-    .document-preview object {
-      width: 100%;
-      height: min(72vh, 680px);
-      border: none;
-      display: block;
-    }
+
+    .viewer.active { display: block; }
 
     footer {
       text-align: center;
-      font-size: 0.85rem;
       color: var(--muted);
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-      margin-top: 6px;
+      font-size: 0.85rem;
+      padding-top: 12px;
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
     }
 
-    @media (max-width: 720px) {
-      body { padding: 24px 12px; }
-      main { padding: 28px 22px; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .wrapper { padding: 26px; }
     }
   </style>
 </head>
 
 <body>
-  <main>
+  <div class="wrapper">
     <nav>
       <div class="brand">Hamza Kamran</div>
-      <a href="index.html">Back to Home</a>
+      <a class="nav-link" href="index.html">Back to Home</a>
     </nav>
 
-    <header style="display:flex; flex-direction:column; gap:10px;">
-      <h1>AI Class Project</h1>
-      <p>
-        This page hosts my RESECON 490AI final project. The presentation deck and the portfolio management report are available to view and download.
-      </p>
-    </header>
+    <section class="hero">
+      <div>
+        <h1>AI Class Project</h1>
+        <p>
+          RESECON 490AI final project materials. Below you can open and download both the presentation (PDF) and the full written report (PDF).
+        </p>
+      </div>
 
-    <section style="display:flex; flex-direction:column; gap:12px;">
+      <div class="meta">
+        <div style="font-weight:800; letter-spacing:-0.01em;">What’s inside</div>
+        <div class="pill-row">
+          <span class="pill">Motivation</span>
+          <span class="pill">Industry overview</span>
+          <span class="pill">Data visuals</span>
+          <span class="pill">Risks + limits</span>
+          <span class="pill">Skills roadmap</span>
+          <span class="pill">AI use statement</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <h2>Project Materials</h2>
+      <p class="subtext">
+        Quick access to view in a new tab or download locally. The preview section below lets you read the PDFs directly on this page.
+      </p>
 
-      <div class="materials">
-        <!-- These file names MUST match your repo files exactly (case + spaces). -->
+      <div class="grid">
+        <!-- Presentation -->
         <article class="card">
-          <div class="label">Slides</div>
-          <strong>Hamza Kamran Presentation</strong>
-          <p>Presentation slides summarizing the approach, findings, and next steps.</p>
+          <div class="label">Presentation (PDF)</div>
+          <strong>Portfolio Management Meets AI</strong>
+          <p>A slide-style deck explaining why AI is becoming central to modern portfolio management.</p>
+          <ul class="bullets">
+            <li>Motivation and why the topic matters</li>
+            <li>Industry context, scale, and fee pressure</li>
+            <li>Key risks and responsible AI considerations</li>
+          </ul>
           <div class="actions">
-            <a class="button primary" href="Hamza%20Kamran%20Presentation.pptx" target="_blank" rel="noopener">Open</a>
-            <a class="button" href="Hamza%20Kamran%20Presentation.pptx" download>Download</a>
+            <a class="btn primary" href="Portfolio_Management_Meets_AI.pdf" target="_blank" rel="noopener">Open</a>
+            <a class="btn" href="Portfolio_Management_Meets_AI.pdf" download>Download</a>
           </div>
         </article>
 
+        <!-- Report -->
         <article class="card">
-          <div class="label">Report</div>
+          <div class="label">Report (PDF)</div>
           <strong>Portfolio Management Report</strong>
-          <p>Full write-up of the methodology, results, and implications.</p>
+          <p>Full write-up of methodology, analysis, and results with supporting details.</p>
+          <ul class="bullets">
+            <li>Methods and assumptions</li>
+            <li>Analysis and results</li>
+            <li>Implications and conclusions</li>
+          </ul>
           <div class="actions">
-            <a class="button primary" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" target="_blank" rel="noopener">Open</a>
-            <a class="button" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>Download</a>
+            <a class="btn primary" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" target="_blank" rel="noopener">Open</a>
+            <a class="btn" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>Download</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="embedded-section">
-      <h2>Report Preview</h2>
-      <p>Preview the PDF directly here. If it does not render in your browser, use Open or Download above.</p>
+    <section>
+      <h2>Preview</h2>
+      <p class="subtext">
+        Use the tabs to switch between the presentation and the report. If a browser blocks inline PDFs, use Open or Download above.
+      </p>
 
-      <div class="document-preview">
+      <div class="preview-shell">
+        <div class="tabs" role="tablist" aria-label="PDF Preview Tabs">
+          <button class="tab active" id="tab-presentation" type="button" aria-controls="presentation-viewer" aria-selected="true">
+            Presentation
+          </button>
+          <button class="tab" id="tab-report" type="button" aria-controls="report-viewer" aria-selected="false">
+            Report
+          </button>
+        </div>
+
         <object
+          id="presentation-viewer"
+          class="viewer active"
+          data="Portfolio_Management_Meets_AI.pdf"
+          type="application/pdf"
+          aria-label="Presentation PDF preview"
+        >
+          <p style="padding:16px; margin:0;">
+            Your browser does not support inline PDFs.
+            Please <a href="Portfolio_Management_Meets_AI.pdf" download>download the presentation</a>.
+          </p>
+        </object>
+
+        <object
+          id="report-viewer"
+          class="viewer"
           data="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf"
           type="application/pdf"
-          aria-label="Portfolio Management Report preview"
+          aria-label="Report PDF preview"
         >
-          <p>
+          <p style="padding:16px; margin:0;">
             Your browser does not support inline PDFs.
-            Please <a href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>download the report</a> to view it.
+            Please <a href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>download the report</a>.
           </p>
         </object>
       </div>
     </section>
 
     <footer>
-      <p>Hamza Kamran · UMass Amherst · Finance &amp; Managerial Economics</p>
+      Hamza Kamran · UMass Amherst · Finance &amp; Managerial Economics
     </footer>
-  </main>
+  </div>
+
+  <script>
+    const tabPresentation = document.getElementById('tab-presentation');
+    const tabReport = document.getElementById('tab-report');
+    const presentationViewer = document.getElementById('presentation-viewer');
+    const reportViewer = document.getElementById('report-viewer');
+
+    function setActive(which) {
+      const isPresentation = which === 'presentation';
+
+      tabPresentation.classList.toggle('active', isPresentation);
+      tabReport.classList.toggle('active', !isPresentation);
+
+      tabPresentation.setAttribute('aria-selected', String(isPresentation));
+      tabReport.setAttribute('aria-selected', String(!isPresentation));
+
+      presentationViewer.classList.toggle('active', isPresentation);
+      reportViewer.classList.toggle('active', !isPresentation);
+    }
+
+    tabPresentation.addEventListener('click', () => setActive('presentation'));
+    tabReport.addEventListener('click', () => setActive('report'));
+  </script>
 </body>
 </html>
