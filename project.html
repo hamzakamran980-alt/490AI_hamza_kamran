@@ -64,7 +64,7 @@
         }
         .materials {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
         .material-card {
@@ -93,6 +93,58 @@
             box-shadow: 0 12px 25px rgba(47, 111, 237, 0.15);
             transform: translateY(-4px);
         }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+            box-shadow: 0 10px 25px rgba(47, 111, 237, 0.25);
+        }
+        .button:hover {
+            transform: translateY(-1px);
+            background: #1f5cd6;
+        }
+        .button.ghost {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            box-shadow: none;
+        }
+        .button.ghost:hover {
+            background: rgba(47, 111, 237, 0.08);
+            transform: none;
+        }
+        .embedded-section {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .document-preview {
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            background: #f8fafc;
+        }
+        .document-preview object {
+            width: 100%;
+            height: min(70vh, 640px);
+            border: none;
+            display: block;
+        }
         @media (max-width: 640px) {
             .wrapper {
                 padding: 28px 24px;
@@ -109,23 +161,40 @@
 
         <header>
             <h1>AI Class Project</h1>
-            <!-- Replace this placeholder paragraph with the final project description -->
-            <p>This page hosts my RESECON 490AI final project. I will expand on the problem statement, data sources, and methods as the semester progresses.</p>
+            <p>This page hosts my RESECON 490AI final project. Both the presentation deck and the portfolio management report are available to view and download.</p>
         </header>
 
         <section>
             <h2>Project Materials</h2>
             <div class="materials">
-                <a class="material-card" href="#">
+                <div class="material-card">
                     <span>Slides</span>
-                    <strong>Presentation Slides</strong>
-                    <p>Deck covering approach, findings, and next steps for the project.</p>
-                </a>
-                <a class="material-card" href="project.pdf">
+                    <strong>Hamza Kamran presentation</strong>
+                    <p>Presentation slides summarizing the approach, findings, and next steps.</p>
+                    <div class="actions">
+                        <a class="button" href="Hamza%20Kamran%20Presentation.pptx" target="_blank" rel="noopener">View</a>
+                        <a class="button ghost" href="Hamza%20Kamran%20Presentation.pptx" download>Download</a>
+                    </div>
+                </div>
+                <div class="material-card">
                     <span>Report</span>
-                    <strong>Project Report</strong>
-                    <p>Full write-up of the methodology, results, and implications.</p>
-                </a>
+                    <strong>Portfolio management report PDF</strong>
+                    <p>Detailed report covering methodology, analysis, and results.</p>
+                    <div class="actions">
+                        <a class="button" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="button ghost" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="embedded-section">
+            <h2>Portfolio management report preview</h2>
+            <p>Review the report directly on this page or open it in a new tab using the buttons above.</p>
+            <div class="document-preview">
+                <object data="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" type="application/pdf" aria-label="Portfolio management report preview">
+                    <p>Your browser does not support inline PDFs. Please <a href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>download the report</a> to view it.</p>
+                </object>
             </div>
         </section>
     </div>
