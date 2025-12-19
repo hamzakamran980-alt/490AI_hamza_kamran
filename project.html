@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Class Project | Hamza Kamran</title>
+  <title>Final Project | Hamza Kamran</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +92,29 @@
       max-width: 70ch;
     }
 
+    .hero ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    /* NEW: subtle disclosure line styling */
+    .disclosure {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      color: rgba(15, 23, 42, 0.68);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
     .meta {
       display: flex;
       flex-direction: column;
@@ -146,7 +169,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-height: 210px;
+      min-height: 220px;
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
@@ -297,21 +320,34 @@
 
     <section class="hero">
       <div>
-        <h1>AI Class Project</h1>
+        <h1>Final Project Summary</h1>
         <p>
-          RESECON 490AI final project materials. Below you can open and download both the presentation (PDF) and the full written report (PDF).
+          For RESECON 490AI, I analyzed the U.S. Portfolio Management industry (NAICS 523920) and evaluated how AI is reshaping
+          competition, productivity, and the investment process.
         </p>
+
+        <!-- Added line here -->
+        <div class="disclosure">
+          This project was completed independently using course-approved tools, with AI used selectively for ideation and revision support in accordance with class guidelines.
+        </div>
+
+        <ul>
+          <li>Mapped industry structure and scale, including major players and concentration dynamics.</li>
+          <li>Visualized long-run AUM growth alongside persistent fee compression and what that means for margins.</li>
+          <li>Explained where AI adds value (research, operations, personalization) and where it introduces risk.</li>
+          <li>Connected the industry shift to a personal skills roadmap for AI-enabled portfolio roles.</li>
+        </ul>
       </div>
 
       <div class="meta">
-        <div style="font-weight:800; letter-spacing:-0.01em;">What’s inside</div>
+        <div style="font-weight:800; letter-spacing:-0.01em;">What’s included</div>
         <div class="pill-row">
-          <span class="pill">Motivation</span>
           <span class="pill">Industry overview</span>
-          <span class="pill">Data visuals</span>
+          <span class="pill">AUM + fee chart</span>
+          <span class="pill">AI impact</span>
           <span class="pill">Risks + limits</span>
-          <span class="pill">Skills roadmap</span>
-          <span class="pill">AI use statement</span>
+          <span class="pill">Skills plan</span>
+          <span class="pill">Reflection</span>
         </div>
       </div>
     </section>
@@ -319,19 +355,18 @@
     <section>
       <h2>Project Materials</h2>
       <p class="subtext">
-        Quick access to view in a new tab or download locally. The preview section below lets you read the PDFs directly on this page.
+        View in a new tab or download locally. The preview section below lets you read both PDFs directly on this page.
       </p>
 
       <div class="grid">
-        <!-- Presentation -->
         <article class="card">
           <div class="label">Presentation (PDF)</div>
           <strong>Portfolio Management Meets AI</strong>
-          <p>A slide-style deck explaining why AI is becoming central to modern portfolio management.</p>
+          <p>A slide-style deck summarizing the problem, industry context, visuals, and AI implications.</p>
           <ul class="bullets">
-            <li>Motivation and why the topic matters</li>
-            <li>Industry context, scale, and fee pressure</li>
-            <li>Key risks and responsible AI considerations</li>
+            <li>Why portfolio management is shifting toward scale + efficiency</li>
+            <li>Key visuals and takeaways</li>
+            <li>Responsible AI considerations</li>
           </ul>
           <div class="actions">
             <a class="btn primary" href="Portfolio_Management_Meets_AI.pdf" target="_blank" rel="noopener">Open</a>
@@ -339,15 +374,14 @@
           </div>
         </article>
 
-        <!-- Report -->
         <article class="card">
           <div class="label">Report (PDF)</div>
-          <strong>Portfolio Management Report</strong>
-          <p>Full write-up of methodology, analysis, and results with supporting details.</p>
+          <strong>Portfolio Management Industry Report</strong>
+          <p>Full write-up covering the industry structure, data sources, visual analysis, AI impact, and skills plan.</p>
           <ul class="bullets">
-            <li>Methods and assumptions</li>
-            <li>Analysis and results</li>
-            <li>Implications and conclusions</li>
+            <li>Industry overview + maturity stage</li>
+            <li>Data sources and integrated visualization</li>
+            <li>AI impact, risks, and conclusions</li>
           </ul>
           <div class="actions">
             <a class="btn primary" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" target="_blank" rel="noopener">Open</a>
