@@ -1,466 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Final Project | Hamza Kamran</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #f5f6fa;
-      --surface: #ffffff;
-      --text: hsl(222, 47%, 11%);
-      --muted: #5f6b7c;
-      --border: rgba(15, 23, 42, 0.12);
-      --accent: #2f6fed;
-      --accent-2: #1f5cd6;
-      --soft: rgba(47, 111, 237, 0.08);
-      --shadow: 0 20px 65px rgba(15, 23, 42, 0.08);
-      --radius: 20px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      padding: 34px 16px 60px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .wrapper {
-      width: 100%;
-      max-width: 980px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: 1.05rem;
-    }
-
-    .nav-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      background: linear-gradient(180deg, rgba(47,111,237,0.06), rgba(47,111,237,0.02));
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 2.7rem);
-      letter-spacing: -0.03em;
-    }
-
-    .hero p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 70ch;
-    }
-
-    .hero ul {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      line-height: 1.6;
-      font-size: 0.98rem;
-    }
-
-    /* NEW: subtle disclosure line styling */
-    .disclosure {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      color: rgba(15, 23, 42, 0.68);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    .meta {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      background: rgba(255,255,255,0.65);
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill {
-      font-size: 0.85rem;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: #fff;
-      color: rgba(15, 23, 42, 0.82);
-      font-weight: 600;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 1.35rem;
-      letter-spacing: -0.01em;
-    }
-
-    .subtext {
-      margin: 8px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .card {
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      border-radius: 18px;
-      padding: 18px;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-height: 220px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
-      border-color: rgba(47, 111, 237, 0.45);
-    }
-
-    .label {
-      font-size: 0.82rem;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .card strong {
-      font-size: 1.12rem;
-      letter-spacing: -0.01em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .bullets {
-      margin: 2px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      line-height: 1.5;
-      font-size: 0.95rem;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-      padding-top: 6px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 800;
-      text-decoration: none;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      color: var(--text);
-      background: #fff;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(47, 111, 237, 0.45);
-      background: rgba(47,111,237,0.05);
-    }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #fff;
-      border-color: transparent;
-      box-shadow: 0 14px 30px rgba(47, 111, 237, 0.25);
-    }
-
-    .btn.primary:hover {
-      background: var(--accent-2);
-      transform: translateY(-1px);
-    }
-
-    .preview-shell {
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      border-radius: 18px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 8px;
-      padding: 12px;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-      background: rgba(248, 250, 252, 0.8);
-      flex-wrap: wrap;
-    }
-
-    .tab {
-      appearance: none;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: #fff;
-      color: rgba(15, 23, 42, 0.85);
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 8px 12px;
-      cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
-    }
-
-    .tab:hover { transform: translateY(-1px); }
-    .tab.active {
-      background: var(--soft);
-      border-color: rgba(47, 111, 237, 0.45);
-      color: var(--accent);
-    }
-
-    .viewer {
-      width: 100%;
-      height: min(74vh, 720px);
-      border: none;
-      display: none;
-      background: #f8fafc;
-    }
-
-    .viewer.active { display: block; }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-      padding-top: 12px;
-      border-top: 1px solid rgba(15, 23, 42, 0.08);
-    }
-
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
-      .wrapper { padding: 26px; }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formula One UMass | Hamza Kamran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5f6fa;
+            --text-color: #1f2933;
+            --muted: #5f6b7c;
+            --accent: #2f6fed;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            padding: 32px 16px 48px;
+        }
+        .wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 65px rgba(15, 23, 42, 0.08);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        nav .brand {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+        }
+        h2 {
+            margin: 0;
+            font-size: clamp(1.4rem, 3vw, 1.7rem);
+        }
+        h3 {
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+        }
+        p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+        .lead {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+        .ai-hero {
+            display: grid;
+            grid-template-columns: minmax(200px, 240px) 1fr;
+            gap: 24px;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(47, 111, 237, 0.08), #fff);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+        }
+        .ai-logo-link {
+            display: block;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: #0b1a3f;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .ai-logo-link img {
+            width: 100%;
+            display: block;
+        }
+        .ai-logo-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+        }
+        .ai-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+        .logo-card {
+            background: linear-gradient(135deg, rgba(47, 111, 237, 0.1), #fff);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 16px;
+            padding: 14px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+            max-width: 360px;
+            width: 100%;
+        }
+        .logo-link {
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: #0c1b3f;
+        }
+        .logo-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .logo-link:hover img {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 12px 24px rgba(47, 111, 237, 0.18);
+        }
+        .logo-note {
+            font-size: 0.95rem;
+            color: var(--muted);
+            text-align: center;
+        }
+        .club-description {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .role-card {
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 14px;
+            padding: 20px;
+            background: #f8fafc;
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+        }
+        .role-card p {
+            color: var(--text-color);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+        .video-card {
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 16px;
+            padding: 18px;
+            background: #fff;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .video-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--accent);
+        }
+        .video-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            background: #0b1a3f;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+        }
+        .video-description p {
+            color: var(--text-color);
+        }
+        .closing {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        @media (max-width: 640px) {
+            .wrapper {
+                padding: 28px 24px;
+            }
+            .ai-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrapper">
-    <nav>
-      <div class="brand">Hamza Kamran</div>
-      <a class="nav-link" href="index.html">Back to Home</a>
-    </nav>
+    <div class="wrapper">
+        <nav>
+            <div class="brand">Hamza Kamran</div>
+            <a href="index.html">Back to Home</a>
+        </nav>
 
-    <section class="hero">
-      <div>
-        <h1>Final Project Summary</h1>
-        <p>
-          For RESECON 490AI, I analyzed the U.S. Portfolio Management industry (NAICS 523920) and evaluated how AI is reshaping
-          competition, productivity, and the investment process.
-        </p>
+        <section class="ai-hero">
+            <a class="ai-logo-link" href="https://ai-next.co" target="_blank" rel="noopener noreferrer">
+                <img src="ai-next.png" alt="AI Next logo" />
+            </a>
+            <div class="ai-copy">
+                <h1>AI Next</h1>
+                <p class="lead">Building Predictive, Enterprise-Grade AI for Real-World Banking</p>
+                <p>AI Next is a technology-first AI solutions firm focused on transforming how banks operate, engage customers, and make decisions.</p>
+                <p>We specialize in designing and deploying enterprise-grade AI systems that move financial institutions from reactive processes to predictive, intelligence-led operations. Our work sits at the intersection of strategic banking vision, deep domain expertise, and applied AI execution.</p>
+                <p>Unlike experimental AI tools or surface-level analytics, AI Next builds systems that integrate directly into core banking workflows — delivering real-time insight, automation, and measurable business impact.</p>
+                <p>From customer retention and engagement to scalable AI-driven operations, our solutions are designed to perform in production environments, not labs.</p>
+                <p class="closing">At AI Next, we don’t add AI to banking. We redesign how banking works.</p>
+            </div>
+        </section>
 
-        <!-- Added line here -->
-        <div class="disclosure">
-          This project was completed independently using course-approved tools, with AI used selectively for ideation and revision support in accordance with class guidelines.
-        </div>
+        <section class="video-grid">
+            <article class="video-card">
+                <div class="video-label">Deposit Attrition Management (DAM)</div>
+                <h3>Predictive Intelligence for Proactive Banking</h3>
+                <div class="video-wrapper">
+                    <video src="dam-video.mp4" controls playsinline preload="metadata"></video>
+                </div>
+                <div class="video-description">
+                    <p>In modern banking, deposits don’t disappear suddenly. They leave quietly. Customers disengage. Balances drift. And by the time attrition shows up in reports, the opportunity to act is already gone.</p>
+                    <p>Deposit Attrition Management (DAM) is an AI-powered solution by AI Next designed to help banks predict customer attrition before it happens — and intervene with precision.</p>
+                    <p>DAM continuously analyzes customer behavior to identify early warning signals, explain why customers are at risk, and surface actionable insights directly within frontline and leadership workflows. Instead of reacting to losses after the fact, banks gain the ability to act early, retain valuable deposits, and make informed, data-driven decisions.</p>
+                    <p>Beyond retention, DAM unlocks growth. By identifying contextual upsell and cross-sell opportunities, it enables smarter engagement, lower acquisition costs, and measurable improvements in customer lifetime value.</p>
+                    <p class="closing">DAM is not a dashboard. It is a new operating model for proactive, intelligence-led banking.</p>
+                </div>
+            </article>
+            <article class="video-card">
+                <div class="video-label">CARE (Client AI Response & Engagement)</div>
+                <h3>AI-Powered Conversations at Enterprise Scale</h3>
+                <div class="video-wrapper">
+                    <video src="care-video.mp4" controls playsinline preload="metadata"></video>
+                </div>
+                <div class="video-description">
+                    <p>Every banking relationship is built on conversations. Yet traditional call centers and IVR systems struggle with scale, consistency, and context. Conversations are fragmented, customer history is lost, and engagement feels transactional rather than personal.</p>
+                    <p>CARE (Client AI Response & Engagement) is AI Next’s AI-powered phone banking and engagement platform, designed to transform how banks communicate with customers — across both inbound and outbound channels.</p>
+                    <p>CARE delivers intelligent, multilingual AI conversations that understand customer context, resume interactions where they last ended, and learn continuously over time. By combining real-time customer data with advanced conversational AI, CARE enables banks to engage thousands of customers simultaneously without sacrificing personalization or quality.</p>
+                    <p>The result is a more consistent customer experience, improved loyalty and Net Promoter Scores, and significantly reduced reliance on human-heavy call center operations.</p>
+                    <p class="closing">CARE doesn’t replace human bankers. It ensures they focus on the conversations that matter most.</p>
+                </div>
+            </article>
+        </section>
 
-        <ul>
-          <li>Mapped industry structure and scale, including major players and concentration dynamics.</li>
-          <li>Visualized long-run AUM growth alongside persistent fee compression and what that means for margins.</li>
-          <li>Explained where AI adds value (research, operations, personalization) and where it introduces risk.</li>
-          <li>Connected the industry shift to a personal skills roadmap for AI-enabled portfolio roles.</li>
-        </ul>
-      </div>
+        <header>
+            <h1>Formula One UMass</h1>
+            <p class="lead">Leadership, marketing, and community building for the UMass Formula 1 community.</p>
+        </header>
 
-      <div class="meta">
-        <div style="font-weight:800; letter-spacing:-0.01em;">What’s included</div>
-        <div class="pill-row">
-          <span class="pill">Industry overview</span>
-          <span class="pill">AUM + fee chart</span>
-          <span class="pill">AI impact</span>
-          <span class="pill">Risks + limits</span>
-          <span class="pill">Skills plan</span>
-          <span class="pill">Reflection</span>
-        </div>
-      </div>
-    </section>
+        <section class="logo-section">
+            <div class="logo-card">
+                <a class="logo-link" href="https://spunshi24.github.io/Formula-One-Umass/" target="_blank" rel="noopener noreferrer">
+                    <img src="club-logo.jpg" alt="Formula One UMass club logo" />
+                </a>
+            </div>
+            <p class="logo-note">Click the logo to visit the Formula One UMass site.</p>
+        </section>
 
-    <section>
-      <h2>Project Materials</h2>
-      <p class="subtext">
-        View in a new tab or download locally. The preview section below lets you read both PDFs directly on this page.
-      </p>
+        <section class="club-description">
+            <h2>Formula One UMass – Leadership, Marketing & Community Building</h2>
+            <p>Formula One UMass is a student-run sports and motorsport enthusiast organization at the University of Massachusetts Amherst dedicated to celebrating Formula 1 culture, competition, and strategy. The club brings together race fans, competitive gamers, and students from all majors to experience Formula 1 both on and off the track through live Grand Prix watch parties, e-racing championships, RC racing events, and large-scale campus activations.</p>
+        </section>
 
-      <div class="grid">
-        <article class="card">
-          <div class="label">Presentation (PDF)</div>
-          <strong>Portfolio Management Meets AI</strong>
-          <p>A slide-style deck summarizing the problem, industry context, visuals, and AI implications.</p>
-          <ul class="bullets">
-            <li>Why portfolio management is shifting toward scale + efficiency</li>
-            <li>Key visuals and takeaways</li>
-            <li>Responsible AI considerations</li>
-          </ul>
-          <div class="actions">
-            <a class="btn primary" href="Portfolio_Management_Meets_AI.pdf" target="_blank" rel="noopener">Open</a>
-            <a class="btn" href="Portfolio_Management_Meets_AI.pdf" download>Download</a>
-          </div>
-        </article>
+        <section class="role-grid">
+            <article class="role-card">
+                <h3>Vice President</h3>
+                <p>As Vice President, I focus on the club’s strategic direction, operations, and organizational growth, working closely with the executive board to ensure smooth execution across events and initiatives. I help coordinate large-scale programming, support cross-team alignment, and contribute to long-term planning as the club continues to scale. These efforts played a key role in sustaining momentum across the academic year and expanding Formula One UMass into one of the most active motorsport communities on campus.</p>
+            </article>
+            <article class="role-card">
+                <h3>Marketing Director</h3>
+                <p>As Marketing Director, I led the club’s branding, outreach, and audience engagement strategy, overseeing digital promotion, event marketing, and campus visibility. I developed and executed marketing campaigns for flagship initiatives such as the E-Racing Championships, the Minutemen Grand Prix RC racing series, and Formula 1 Grand Prix watch parties. This work directly contributed to a sixfold increase in event attendance and significant growth in overall membership engagement.</p>
+            </article>
+        </section>
 
-        <article class="card">
-          <div class="label">Report (PDF)</div>
-          <strong>Portfolio Management Industry Report</strong>
-          <p>Full write-up covering the industry structure, data sources, visual analysis, AI impact, and skills plan.</p>
-          <ul class="bullets">
-            <li>Industry overview + maturity stage</li>
-            <li>Data sources and integrated visualization</li>
-            <li>AI impact, risks, and conclusions</li>
-          </ul>
-          <div class="actions">
-            <a class="btn primary" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" target="_blank" rel="noopener">Open</a>
-            <a class="btn" href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>Download</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>Preview</h2>
-      <p class="subtext">
-        Use the tabs to switch between the presentation and the report. If a browser blocks inline PDFs, use Open or Download above.
-      </p>
-
-      <div class="preview-shell">
-        <div class="tabs" role="tablist" aria-label="PDF Preview Tabs">
-          <button class="tab active" id="tab-presentation" type="button" aria-controls="presentation-viewer" aria-selected="true">
-            Presentation
-          </button>
-          <button class="tab" id="tab-report" type="button" aria-controls="report-viewer" aria-selected="false">
-            Report
-          </button>
-        </div>
-
-        <object
-          id="presentation-viewer"
-          class="viewer active"
-          data="Portfolio_Management_Meets_AI.pdf"
-          type="application/pdf"
-          aria-label="Presentation PDF preview"
-        >
-          <p style="padding:16px; margin:0;">
-            Your browser does not support inline PDFs.
-            Please <a href="Portfolio_Management_Meets_AI.pdf" download>download the presentation</a>.
-          </p>
-        </object>
-
-        <object
-          id="report-viewer"
-          class="viewer"
-          data="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf"
-          type="application/pdf"
-          aria-label="Report PDF preview"
-        >
-          <p style="padding:16px; margin:0;">
-            Your browser does not support inline PDFs.
-            Please <a href="Portfolio%20Management%20Report%20Hamza%20Kamran.pdf" download>download the report</a>.
-          </p>
-        </object>
-      </div>
-    </section>
-
-    <footer>
-      Hamza Kamran · UMass Amherst · Finance &amp; Managerial Economics
-    </footer>
-  </div>
-
-  <script>
-    const tabPresentation = document.getElementById('tab-presentation');
-    const tabReport = document.getElementById('tab-report');
-    const presentationViewer = document.getElementById('presentation-viewer');
-    const reportViewer = document.getElementById('report-viewer');
-
-    function setActive(which) {
-      const isPresentation = which === 'presentation';
-
-      tabPresentation.classList.toggle('active', isPresentation);
-      tabReport.classList.toggle('active', !isPresentation);
-
-      tabPresentation.setAttribute('aria-selected', String(isPresentation));
-      tabReport.setAttribute('aria-selected', String(!isPresentation));
-
-      presentationViewer.classList.toggle('active', isPresentation);
-      reportViewer.classList.toggle('active', !isPresentation);
-    }
-
-    tabPresentation.addEventListener('click', () => setActive('presentation'));
-    tabReport.addEventListener('click', () => setActive('report'));
-  </script>
+        <section>
+            <p class="closing">Through these roles, I’ve gained hands-on experience in leadership, marketing strategy, event operations, and community building within a fast-paced, high-energy environment that mirrors the coordination, branding, and execution dynamics behind professional Formula 1 organizations.</p>
+        </section>
+    </div>
 </body>
 </html>
