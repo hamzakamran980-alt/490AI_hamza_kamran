@@ -6,14 +6,15 @@
     <title>Hamza Kamran | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background: #f5f5f5;
+            --background: linear-gradient(135deg, #e6f0ff 0%, #f3fffa 100%);
             --surface: #ffffff;
-            --text: #111111;
-            --muted: #5c5c5c;
-            --border: #dddddd;
+            --text: #0d1c2f;
+            --muted: #4b5a70;
+            --border: #c6d4e5;
+            --accent: #0aa889;
         }
         * {
             box-sizing: border-box;
@@ -21,7 +22,7 @@
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Space Grotesk', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
             background: var(--background);
             color: var(--text);
             display: flex;
@@ -80,20 +81,21 @@
         }
         .button {
             text-decoration: none;
-            border: 1px solid var(--text);
+            border: 1px solid var(--accent);
             color: var(--text);
             padding: 12px 20px;
             border-radius: 999px;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: background 0.2s ease, color 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
         }
         .button.primary {
-            background: var(--text);
+            background: var(--accent);
             color: #fff;
         }
         .button:hover {
-            background: var(--text);
+            background: var(--accent);
+            border-color: var(--accent);
             color: #fff;
         }
         section {
@@ -119,7 +121,7 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 20px;
-            background: #fafafa;
+            background: #f7fbff;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -196,7 +198,7 @@
             <div class="hero-content">
                 <p class="eyebrow">Finance & Managerial Economics</p>
                 <h1>Hamza Kamran</h1>
-                <p class="summary">BBA Finance and BS Managerial Economics candidate at UMass Amherst focused on financial modeling, AI-enabled analysis, and research-backed decision-making. I blend market research, econometrics, and automation tools to help teams move from raw data to strategic action.</p>
+                <p class="summary">BBA Finance and BS Managerial Economics candidate at UMass Amherst focused on financial modeling, AI-enabled analysis, and research-backed decision-making. I blend market research, econometrics, and automation tools to help teams move from raw data to strategic action, including building enterprise AI solutions for financial institutions through my work at AI Next Technologies.</p>
                 <div class="actions">
                     <a class="button primary" href="resume.pdf">Resume</a>
                     <a class="button" href="project.html">Projects</a>
@@ -209,6 +211,7 @@
         <section>
             <h2>About Me</h2>
             <p>I’m a senior at the Isenberg School of Management building a career at the intersection of capital markets, AI applications, and economic strategy. From independently scaling a personal trading portfolio during the pandemic to supporting interdisciplinary research at the Slavery North Initiative, I’m driven by curiosity and disciplined analysis.</p>
+            <p>Alongside my academic work, I serve as Director of Innovation at AI Next Technologies, where I help design and position enterprise AI solutions for the banking sector. My work focuses on translating predictive analytics and automation into practical systems that improve customer retention, engagement, and decision-making at scale. This experience grounds my technical and economic training in real-world deployment, bridging strategy, AI, and financial services.</p>
             <p>At UMass Amherst I pursue dual degrees in Finance (Financial Risk Management & Alternative Investments track) and Managerial Economics while holding leadership roles and hands-on campus jobs that keep me connected to the community.</p>
             <div class="about-grid">
                 <article class="card">
@@ -224,18 +227,43 @@
                     <h3>Current Roles</h3>
                     <strong>AI + Research</strong>
                     <ul class="list">
+                        <li><strong>Director of Innovation, AI Next Technologies</strong>
+                            <ul class="list">
+                                <li>Leading product innovation and strategic positioning for AI-powered banking solutions focused on predictive intelligence, customer engagement, and enterprise-scale deployment.</li>
+                            </ul>
+                        </li>
                         <li>MSBDC Summer Intern integrating AI tools into business plans, forecasts, and pitch materials.</li>
                         <li>Undergraduate Research Assistant for the Slavery North Initiative digitizing complex historical archives.</li>
-                        <li>Founder of StratiVis, an experimentation studio exploring data-driven strategy projects.</li>
                     </ul>
                 </article>
                 <article class="card">
-                    <h3>Industry Experience</h3>
-                    <strong>Clean Energy & Capital Markets</strong>
+                    <h3>AI and FinTech Experience</h3>
                     <ul class="list">
-                        <li>Re-Volt Charging: modeled EV charger utilization, capital needs, and incentive-driven ROI.</li>
-                        <li>JS Group Internships: investment banking, risk, and wealth roles across JS Global Capital, JS Investments, and JS Bank.</li>
-                        <li>Pakistan Stock Exchange: achieved 150% ROI through disciplined technical and macro analysis.</li>
+                        <li><strong>AI and Banking Technology: AI Next Technologies</strong>
+                            <ul class="list">
+                                <li>Driving innovation and product positioning for AI-powered banking solutions.</li>
+                                <li>Bridging strategy, predictive analytics, and scalable engagement systems.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Clean Energy and Infrastructure Analytics: Re-Volt Charging</strong>
+                            <ul class="list">
+                                <li>Modeled EV charger utilization, capital needs, and incentive-driven ROI to guide deployment strategy.</li>
+                                <li>Built forecasting and KPI-driven outputs using Stable Auto and National Grid datasets.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Investment Banking and Wealth: JS Group Internships</strong>
+                            <ul class="list">
+                                <li>Supported investment banking analysis and client-ready outputs across JS Global Capital.</li>
+                                <li>Contributed risk and fund analysis across mutual and pension assets at JS Investments.</li>
+                                <li>Supported private banking analyses and relationship strategy at JS Bank.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Capital Markets and Trading: Pakistan Stock Exchange</strong>
+                            <ul class="list">
+                                <li>Achieved 150% ROI through disciplined technical and macro analysis.</li>
+                                <li>Applied research-backed entry and exit decision-making.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </article>
             </div>
